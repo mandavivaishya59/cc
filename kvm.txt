@@ -92,6 +92,9 @@ snap list microstack
 # Initialize MicroStack (auto mode, control node)
 sudo microstack init --auto --control
 
+#Initialize the microstack
+microstack.init
+
 # Check OpenStack client version
 microstack.openstack --version
 
