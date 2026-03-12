@@ -6,16 +6,10 @@ query = input("Enter location: ")
 
 url = "https://us1.locationiq.com/v1/search.php"
 
-# params = {
-#     "key": api_key,
-#     "q": query,
-#     "format": "json"
-# }
 
-# response = requests.get(url, params=params)
-# data = response.json()
-
-data=requests.get(url,params={"q":query,"key":api_key,"format":"json"}).json()
+data=requests.get(url,params={"q":query,
+                              "key":api_key,
+                              "format":"json"}).json()
 
 
 print("Place ID:", data[0]["place_id"])
