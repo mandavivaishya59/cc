@@ -1,0 +1,102 @@
+#prac4
+# Update and upgrade packages
+sudo apt update && sudo apt upgrade -y
+
+# Check CPU virtualization support
+sudo grep -c "vmx\|svm" /proc/cpuinfo
+
+#TO Check CPU virtualization/output should be more than 0
+egrep -c "(vmx|svm)" /proc/cpuinfo                              #
+After this direct run # Enable and start libvirtd service
+
+# Install CPU checker
+sudo apt install cpu-checker -y                     #
+kvm-ok
+
+# Install KVM and related packages
+sudo apt install qemu-kvm virt-manager libvirt-daemon-system libvirt-clients bridge-utils -y        #
+
+# Enable and start libvirtd service         #
+sudo systemctl enable libvirtd              
+sudo systemctl start libvirtd
+sudo systemctl status libvirtd
+
+# Add user to kvm and libvirt groups        #
+sudo usermod -aG kvm $user
+sudo usermod -aG libvirt $user
+
+sudo systemctl status libvirtd      #
+
+Then search vmm app and create a virtual machine 
+
+ip a                                        #
+sudo nano /etc/netplan/01-netcfg.yaml
+
+network:
+  version: 2
+  renderer: networkd
+  bridges:
+    br0:
+      interfaces: [ens33] # change it with ip a 
+      dhcp4: yes
+
+save and exit           
+
+sudo netplan apply
+                    # last
+brctl show
+
+
+
+virt-manager
+
+Download TrueConf server
+
+wget https://trueconf.com/downloads/server/linux/trueconf-server.deb
+
+Install the server
+
+sudo dpkg -i trueconf-server.deb        #
+
+Fix dependencies (if required)
+
+sudo apt install -f         #
+
+Start the server
+
+sudo systemctl start trueconf       #
+
+Access server in browser
+
+http://localhost    #
+Result
+
+TrueConf Server installed successfully on the KVM virtual machine.
+
+Quick viva line you can say if asked:
+
+TrueConf Server is a video conferencing server used for online meetings and communication.
+
+
+#prac9
+
+# Update and upgrade system packages
+sudo apt update && sudo apt upgrade -y
+
+# Install MicroStack from the beta channel
+sudo snap install microstack --beta
+
+# Verify installation
+snap list microstack
+
+# Initialize MicroStack (auto mode, control node)
+sudo microstack init --auto --control
+
+# Check OpenStack client version
+microstack.openstack --version
+
+# Retrieve keystore password
+sudo snap get microstack config.credentials.keystone-password
+
+# Check IP addresses
+ip a
