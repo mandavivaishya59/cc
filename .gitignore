@@ -1,0 +1,8 @@
+*.class
+__pycache__/
+*.pyc
+API_KEY
+SEARCH_ENGINE_ID
+uploads/
+.DS_Store
+.vscode/
