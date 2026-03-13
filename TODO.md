@@ -1,12 +1,18 @@
 # TODO.md: Steps to Make CC Repo Public for Exam Access
 
-## Pending Steps (from approved plan):
-1. [ ] Secure sensitive files: Rename API_KEY and SEARCH_ENGINE_ID, add to .gitignore.
-2. [ ] Commit and push changes: `git add . && git commit -m "Secure sensitive files" && git push origin main`.
-3. [ ] Check/install gh CLI for GitHub management.
-4. [ ] Make repo public: `gh repo edit --visibility public`.
-5. [ ] Generate raw file links and create/update README.md with list of all practical files.
-6. [ ] Test raw links in incognito browser (no login).
-7. [ ] Complete: Run `attempt_completion` with instructions.
+## Completed Steps:
+1. ✓ Secure sensitive files: Renamed API_KEY -> API_KEY.secret, SEARCH_ENGINE_ID -> SEARCH_ENGINE_ID.secret (already in .gitignore); committed and pushed.
+2. ✓ Commit and push changes.
+3. ✓ gh CLI installed (v2.88.0).
 
-**Progress: Starting step 1**
+## Pending Steps:
+4. [ ] gh auth login (run command below, follow browser prompt).
+5. [ ] Make repo public: `gh repo edit --visibility public`.
+6. [ ] Add README.md to git and push.
+7. [ ] Test raw links.
+
+**Progress: Ready for gh auth. gh CLI needs login for repo edit.
+
+Run this: `gh auth login`
+
+Then reply "logged in" so I can proceed to make public and push README.md.**
